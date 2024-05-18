@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">BackingQuack</string>
+    <string name="logoBQ">Logo Backing Quack</string>
+    <string name="imgSelectChord">SelectChord</string>
+    <string name="amplificador">Amplificador</string>
+    <string name="letsrock">Lets Rock</string>
 </resources>
