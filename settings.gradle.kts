@@ -21,4 +21,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "BackingQuack"
 include(":app")
- 
+include(":core")

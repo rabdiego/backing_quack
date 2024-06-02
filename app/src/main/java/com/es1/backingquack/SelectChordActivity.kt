@@ -1,5 +1,6 @@
 package com.es1.backingquack
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.AdapterView
@@ -24,7 +25,12 @@ class SelectChordActivity : AppCompatActivity() {
             insets
         }
         spinner = findViewById(R.id.spinnerChord)
-        val listItems = listOf("IV V II II", "II III VI VII", "II I V VII")
+        val listItems = listOf(
+            "I-IV-V", "I-V-vi-IV",
+            "ii-V-I", "I-vi-IV-V",
+            "vi-IV-I-V", "I-vi-ii-V",
+            "I-IV-I-V", "I-vi-iii-IV",
+            "I-V-IV", "I-iii-IV-V")
 
         var arrayAdapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, listItems)
         arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
@@ -39,6 +45,10 @@ class SelectChordActivity : AppCompatActivity() {
             ) {
                 val selectedItem = parent?.getItemAtPosition(position).toString()
                 Toast.makeText(this@SelectChordActivity, "You've selected $selectedItem", Toast.LENGTH_SHORT).show()
+
+                val intent = Intent(this@SelectChordActivity, TonsActivity::class.java)
+                startActivity(intent)
+
             }
 
             override fun onNothingSelected(parent: AdapterView<*>?) {

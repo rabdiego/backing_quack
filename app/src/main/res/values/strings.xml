@@ -4,4 +4,33 @@
     <string name="imgSelectChord">SelectChord</string>
     <string name="amplificador">Amplificador</string>
     <string name="letsrock">Lets Rock</string>
+    <string name="selectbpm">Select BPM</string>
+    <string name="selecttom">Select Tom</string>
+    <string name="slider">Slider</string>
+    <string name="slidermin">60</string>
+    <string name="slidermax">200</string>
+    <string name="playing">Playing</string>
+
+
+    <!-- Tons -->
+
+    <string name="tom01_c">C</string>
+    <string name="tom02_csus">C#</string>
+    <string name="tom03_d">D</string>
+    <string name="tom04_dsus">D#</string>
+    <string name="tom05_e">E</string>
+    <string name="tom06_f">F</string>
+    <string name="tom07_fsus">F#</string>
+    <string name="tom08_g">G</string>
+    <string name="tom09_gsus">G#</string>
+    <string name="tom10_a">A</string>
+    <string name="tom11_asus">A#</string>
+    <string name="tom12_b">B</string>
+
+    <!-- Buttons -->
+    <string name="playbutton">Play</string>
+    <string name="stopbutton">Stop</string>
+
+
+
 </resources>
