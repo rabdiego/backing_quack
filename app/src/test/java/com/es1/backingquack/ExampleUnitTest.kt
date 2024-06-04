@@ -1,4 +1,4 @@
-package com.example.backingquack
+package com.es1.backingquack
 
 import org.junit.Test
 

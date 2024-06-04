@@ -13,10 +13,20 @@
         android:theme="@style/Theme.BackingQuack"
         tools:targetApi="31">
         <activity
+            android:name=".PlayingActivity"
+            android:exported="false" />
+        <activity
+            android:name=".TonsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".BPMActivity"
+            android:exported="false" />
+        <activity
+            android:name=".SelectChordActivity"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
-            android:exported="true"
-            android:label="@string/app_name"
-            android:theme="@style/Theme.BackingQuack">
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
