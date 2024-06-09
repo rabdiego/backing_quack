@@ -9,6 +9,7 @@ pluginManagement {
         }
         mavenCentral()
         gradlePluginPortal()
+        maven("https://maven.sing-group.org/repository/maven/")
     }
 }
 dependencyResolutionManagement {
@@ -16,9 +17,10 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
+        maven("https://maven.sing-group.org/repository/maven/")
     }
 }
 
 rootProject.name = "BackingQuack"
 include(":app")
- 
+include(":core")
