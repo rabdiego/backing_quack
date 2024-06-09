@@ -1,3 +1,5 @@
+package com.es1.backingquack
+
 import java.io.File
 import org.jfugue.midi.MidiFileManager
 import org.jfugue.pattern.Pattern

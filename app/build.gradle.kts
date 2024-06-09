@@ -35,6 +35,7 @@ android {
     }
 }
 
+
 dependencies {
 
     implementation(libs.androidx.core.ktx)
@@ -45,8 +46,9 @@ dependencies {
     implementation(libs.androidx.core.ktx)
     implementation(libs.material)
     testImplementation(libs.junit)
-
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+
+    implementation("jfugue:jfugue:5.0.9")
     implementation("pl.droidsonroids.gif:android-gif-drawable:1.2.23")
 }
