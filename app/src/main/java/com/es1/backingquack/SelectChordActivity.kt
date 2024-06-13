@@ -26,6 +26,7 @@ class SelectChordActivity : AppCompatActivity() {
         }
         spinner = findViewById(R.id.spinnerChord)
         val listItems = listOf(
+            "",
             "I-IV-V", "I-V-vi-IV",
             "ii-V-I", "I-vi-IV-V",
             "vi-IV-I-V", "I-vi-ii-V",
@@ -46,8 +47,11 @@ class SelectChordActivity : AppCompatActivity() {
                 val selectedItem = parent?.getItemAtPosition(position).toString()
                 Toast.makeText(this@SelectChordActivity, "You've selected $selectedItem", Toast.LENGTH_SHORT).show()
 
-                val intent = Intent(this@SelectChordActivity, TonsActivity::class.java)
-                startActivity(intent)
+                if (selectedItem.isNotEmpty()){
+                    val intent = Intent(this@SelectChordActivity, TonsActivity::class.java)
+                    startActivity(intent)
+                }
+
 
             }
 
