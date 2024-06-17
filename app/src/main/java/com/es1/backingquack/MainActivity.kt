@@ -2,14 +2,15 @@ package com.es1.backingquack
 
 import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.AppCompatImageButton
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.es1.core.BackingTrackData
 
 class MainActivity : AppCompatActivity() {
-    private lateinit var startBtn : AppCompatImageButton
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -21,16 +22,15 @@ class MainActivity : AppCompatActivity() {
             insets
         }
 
-        startBtn = findViewById(R.id.btn_letsrock)
-
-        startBtn.setOnClickListener {
-
+        Handler(Looper.getMainLooper()).postDelayed({
+            val backingTrackData = BackingTrackData(chords = "", tom = "", bpm = 120)
             val intent = Intent(this, SelectChordActivity::class.java)
+            intent.putExtra("BACKING_TRACK_DATA", backingTrackData)
+
 
             startActivity(intent)
-
-
-        }
+            finish()
+        }, 500)  // 500 milissegundos
 
     }
 }

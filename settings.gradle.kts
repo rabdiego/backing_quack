@@ -10,6 +10,7 @@ pluginManagement {
         mavenCentral()
         gradlePluginPortal()
         maven("https://maven.sing-group.org/repository/maven/")
+        maven("https://github.com/kshoji/JFugue-for-Android/raw/master/jfugue-android/snapshot")
     }
 }
 dependencyResolutionManagement {
@@ -18,6 +19,7 @@ dependencyResolutionManagement {
         google()
         mavenCentral()
         maven("https://maven.sing-group.org/repository/maven/")
+        maven("https://github.com/kshoji/JFugue-for-Android/raw/master/jfugue-android/snapshot")
     }
 }
 
