@@ -1,4 +1,4 @@
-package com.es1.core
+package com.es1.core.model
 
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize
