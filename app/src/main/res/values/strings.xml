@@ -28,7 +28,7 @@
     <string name="tom12_b">B</string>
 
     <!-- Buttons -->
-    <string name="playbutton">Play</string>
+    <string name="play_pause_button">Play/Pause</string>
     <string name="stopbutton">Stop</string>
 
 

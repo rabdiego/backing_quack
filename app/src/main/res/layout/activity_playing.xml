@@ -69,16 +69,16 @@
         app:layout_constraintGuide_percent="0.9" />
 
     <ImageButton
-        android:id="@+id/ibtn_play"
+        android:id="@+id/ibtn_play_pause"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@drawable/play"
-        android:contentDescription="@string/playbutton"
+        android:background="?attr/selectableItemBackground"
+        android:src="@drawable/play_icon"
+        android:contentDescription="@string/play_pause_button"
         app:layout_constraintBottom_toTopOf="@+id/guideline7"
         app:layout_constraintEnd_toStartOf="@+id/guideline8"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/gl_margin_bottom"
-        app:srcCompat="@drawable/play" />
+        app:layout_constraintTop_toTopOf="@+id/gl_margin_bottom" />
 
     <ImageButton
         android:id="@+id/ibtn_stop"
@@ -101,14 +101,5 @@
         app:layout_constraintGuide_percent="0.5"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <ToggleButton
-        android:id="@+id/play_pause_bttn"
-        android:textOn="PLAY"
-        android:textOff="PAUSE"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        tools:layout_editor_absoluteX="162dp"
-        tools:layout_editor_absoluteY="577dp"
-        tools:ignore="MissingConstraints" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

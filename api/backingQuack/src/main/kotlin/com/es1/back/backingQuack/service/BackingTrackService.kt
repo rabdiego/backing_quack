@@ -20,7 +20,7 @@ class BackingTrackService {
         val cp = ChordProgression(chordProgression).setKey(request.root)
         val rhythm= Rhythm()
         rhythm.addLayer("O...").addLayer("````")
-        val repeats = getNumberOfRepeats(request.chordProgressionList)
+        val repeats = getNumberOfRepeats(request.chordProgressionList.toString())
         val pattern = Pattern(cp, rhythm.pattern.repeat(repeats)).setTempo(request.bpm)
 
         val uuid = UUID.randomUUID()

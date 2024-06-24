@@ -1,6 +1,9 @@
 package com.es1.backingquack
 
+import android.content.Intent
 import android.os.Bundle
+import android.widget.Button
+import android.widget.ImageButton
 import android.widget.ToggleButton
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -15,7 +18,12 @@ import java.io.File
 class PlayingActivity : AppCompatActivity() {
 
     private lateinit var midiPlayer: MidiPlayer
-    private lateinit var toggleButton: ToggleButton
+    private lateinit var midiDownloader: MidiDownloader
+    private lateinit var buttonPlayPause: ImageButton
+    private lateinit var buttonStop: ImageButton
+    private var midiFile: File? = null
+    private var isPlaying: Boolean = false
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,8 +34,12 @@ class PlayingActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+
+        buttonPlayPause = findViewById(R.id.ibtn_play_pause)
+        buttonStop = findViewById(R.id.ibtn_stop)
+
         midiPlayer = MidiPlayer(this)
-        toggleButton = findViewById(R.id.play_pause_bttn)
+        midiDownloader = MidiDownloader(this)
 
 
         val backingTrackData: BackingTrackData? = intent.getParcelableExtra("BACKING_TRACK_DATA")
@@ -39,28 +51,48 @@ class PlayingActivity : AppCompatActivity() {
                 root = backingTrackData.tom,
                 bpm = backingTrackData.bpm
             )
-            val midiDownloader = MidiDownloader(this)
 
             midiDownloader.downloadMidi(
                 request,
-                { midiFile ->
-                    midiPlayer.play(midiFile, loop = true)
-                    playPauseButton(midiFile)
+                { file ->
+                    midiFile = file
+                    midiPlayer.init(file)
                 },
                 { throwable -> throwable.printStackTrace() })
-
-
         }
 
-    }
-
-    private fun playPauseButton(backingTrack: File) {
-        toggleButton.setOnCheckedChangeListener { _, isChecked ->
-            if (isChecked) {
+        buttonPlayPause.setOnClickListener {
+            if (isPlaying) {
                 midiPlayer.pause()
+                updatePlayPauseButtonIcon(false)
             } else {
-                midiPlayer.play(backingTrack, loop = true)
+                midiPlayer.play()
+                updatePlayPauseButtonIcon(true)
             }
+            isPlaying = !isPlaying
         }
+
+        buttonStop.setOnClickListener {
+            midiPlayer.stop()
+            midiFile?.let { midiPlayer.init(it) }
+            updatePlayPauseButtonIcon(false)
+            isPlaying = false
+            val intent = Intent(this, MainActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK
+            startActivity(intent)
+            finish()
+        }
+
     }
+
+    private fun updatePlayPauseButtonIcon(isPlaying: Boolean) {
+        val icon = if (isPlaying) R.drawable.pause_icon else R.drawable.play_icon
+        buttonPlayPause.setImageResource(icon)
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        midiPlayer.release()
+    }
+
 }

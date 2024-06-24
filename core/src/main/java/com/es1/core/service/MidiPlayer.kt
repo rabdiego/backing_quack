@@ -10,22 +10,16 @@ class MidiPlayer(private val context: Context) {
     private var mediaPlayer: MediaPlayer? = null
     private var isLooping: Boolean = false
 
-    fun play(file: File, loop: Boolean = false) {
+
+    fun init(file: File) {
         mediaPlayer = MediaPlayer().apply {
             setDataSource(file.absolutePath)
+            isLooping = true
             prepare()
-            start()
-            isLooping = loop
         }
-
-        mediaPlayer?.setOnCompletionListener {
-            if (isLooping) {
-                it.start()
-            } else {
-                it.release()
-                mediaPlayer = null
-            }
-        }
+    }
+    fun play() {
+       mediaPlayer?.start()
     }
 
     fun pause() {
@@ -34,7 +28,18 @@ class MidiPlayer(private val context: Context) {
 
     fun stop() {
         mediaPlayer?.stop()
+        mediaPlayer?.reset()
+    }
+
+    fun release() {
         mediaPlayer?.release()
         mediaPlayer = null
+    }
+    fun isPlaying(): Boolean {
+        return mediaPlayer?.isPlaying ?: false
+    }
+
+    fun isInitialized(): Boolean {
+        return mediaPlayer != null
     }
 }
